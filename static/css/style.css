@@ -6,6 +6,9 @@
     box-sizing: border-box;
     font-family: 'Source Sans Pro', sans-serif;
 }
+html{
+    background-color: #008793;
+}
 
 body{
     height: 100vh;
@@ -53,4 +56,14 @@ textarea {
 }
 h1{
     color: blue;
+}
+
+
+
+
+/*RESPONSIVITY*/
+@media only screen and (max-width: 600px){
+    .box{
+       width: 95%;
+    }
 }
