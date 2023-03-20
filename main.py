@@ -3,7 +3,7 @@ import openai
 
 app = Flask(__name__)
 
-openai.api_key = "YOUR_API_KEY"
+openai.api_key = "YOUR_API_KEY" 
 
 @app.route('/' , methods = ["GET" , "POST"])
 def index():
@@ -15,19 +15,21 @@ def index():
 
 @app.route('/post')
 def post():
-    return render_template('post.html' , post = post )
+    return render_template('post.html')
 
 
 def generate_post(title):
     response = openai.Completion.create(
         engine="text-davinci-002",
-        prompt=f"Write a LinkedIn post about {title} with hashtags.",
+        prompt=f"Write a LinkedIn post about {title} with minimum 40 words and hashtags at the end",
         max_tokens=1000,
         n=1,
         stop=None,
         temperature=0.7,
     )
     return response.choices[0].text.strip()
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
