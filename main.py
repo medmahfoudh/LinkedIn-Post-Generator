@@ -9,8 +9,9 @@ openai.api_key = "YOUR_API_KEY"
 def index():
     if request.method == 'POST':
         title = request.form['title']
-        post = generate_post(title)
-        return render_template("post.html", post=post, title=title)
+        word = request.form['word']
+        post = generate_post(title, word)
+        return render_template("post.html", post=post, title=title , word = word)
     return render_template("index.html")
 
 @app.route('/post')
@@ -18,10 +19,11 @@ def post():
     return render_template('post.html')
 
 
-def generate_post(title):
+def generate_post(title , word):
     response = openai.Completion.create(
         engine="text-davinci-002",
-        prompt=f"Write a LinkedIn post about {title} with minimum 40 words and hashtags at the end",
+        prompt = f"I want to write a LinkedIn post that talks about me {title} , write the post in {word} words.",
+        # prompt=f"Write a LinkedIn post about {title} with minimum 40 words and hashtags at the end",
         max_tokens=1000,
         n=1,
         stop=None,
