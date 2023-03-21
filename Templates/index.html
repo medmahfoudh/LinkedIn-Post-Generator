@@ -9,7 +9,31 @@
     <!--==========CSS===========-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" />
-    <title>LinkedIn Post Generator</title>
+    <title>LinkedIn Post Generator</title> 
+    <script>
+        function copyPost() {
+            var post = document.getElementById("post");
+            var range = document.createRange();
+            range.selectNode(post);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            var alert = document.createElement("div");
+            alert.innerHTML = "Post copied to clipboard!";
+            alert.style.position = "fixed";
+            alert.style.top = "0";
+            alert.style.left = "50%";
+            alert.style.transform = "translate(-50%, 0)";
+            alert.style.backgroundColor = "green";
+            alert.style.color = "white";
+            alert.style.padding = "10px";
+            alert.style.borderRadius = "5px";
+            document.body.appendChild(alert);
+            setTimeout(function() {
+                alert.parentNode.removeChild(alert);
+            }, 2000);
+        }
+	</script>
 </head>
 <body>
     {% block body %}
@@ -18,16 +42,26 @@
         <form method="POST">
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Tell us what's on your mind</label>
-                <textarea  name="title" id="exampleFormControlTextarea1" rows="3" placeholder="What do you want to post about....." required></textarea>
+                <textarea class="input-post" name="title" id="exampleFormControlTextarea1" rows="3" placeholder="What do you want to talk about....." required></textarea>
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon2">Do you want to specify the number of words for your post?</span>
+                <span class="input-group-text" id="basic-addon2">Want to specify an approximate word count for your post?</span>
                 <input type="text"  name="word" class="form-control" placeholder="number of words"
                  aria-label="Do you want to specify the number of words for your post?" aria-describedby="basic-addon2">
               </div>
               
             <button type="submit" class="btn btn-primary">generate</button>
         </form>
+        <div class="alert alert-primary mt-2 text-start" role="alert">
+            Generate Your LinkedIn posts using the power of AI! <br>
+             With the help of the ChatGPT API, our website allows users to enter a 
+             title or short idea of what they want to post about, and outputs an entire 
+             post that they can use on their LinkedIn profile. This project can help us save 
+             time and effort in creating engaging and relevant content for our professional network, 
+             while also leveraging the latest advancements in AI technology. By using this website,
+              we can focus on other important tasks while still maintaining an active and engaging presence
+            on LinkedIn.
+          </div>
     </div>
     {% endblock %}
 

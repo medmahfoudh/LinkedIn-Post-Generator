@@ -1,16 +1,21 @@
-{% extends 'index.html' %}
 
+{% extends 'index.html' %}
 {% block body %}
 <div class="box">
 
     <h1>Generated Post</h1>
-    <p>{{ post }}</p>
-    <form action="/" method="post">
-        <input type="hidden" name="title" value="{{ title }}">
-        <input type="hidden" name="word" value="{{ word }}">
-        <input class="btn btn-primary" type="submit" value="Regenerate">
+    <p id="post">{{ post }}</p>
+    <div class="btns">
+        <button class="btn btn-primary" onclick="copyPost()">Copy Post</button>
         <a href="/" class="btn btn-primary" >Generate Another Post</a>
-    </form>
+        <form action="/" method="post">
+            <input type="hidden" name="title" value="{{ title }}">
+            <input type="hidden" name="word" value="{{ word }}">
+            <input class="btn btn-primary" type="submit" value="Regenerate">
+        </form>
+        
+    </div>
 </div>
 {% endblock %}
+
 

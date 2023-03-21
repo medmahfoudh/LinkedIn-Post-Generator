@@ -3,20 +3,23 @@ import openai
 
 app = Flask(__name__)
 
-openai.api_key = "YOU_API_KEY" 
+openai.api_key = "YOUR_API_KEY" 
 
 @app.route('/' , methods = ["GET" , "POST"])
 def index():
     if request.method == 'POST':
+        global title 
         title = request.form['title']
+        global word 
         word = request.form['word']
+        global post 
         post = generate_post(title , word)
-        return render_template("post.html", post=post, title=title , word = word)
+        return redirect('post')
     return render_template("index.html")
 
 @app.route('/post')
-def post():
-    return render_template('post.html')
+def post_generated():
+    return render_template('post.html', post=post, title=title , word = word)
 
 
 def generate_post(title , word):
