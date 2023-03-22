@@ -65,11 +65,24 @@ h1{
     gap: 10px;
 }
 
+.copyright{
+    text-decoration: none;
+}
+
 
 
 /*RESPONSIVITY*/
 @media only screen and (max-width: 600px){
     .box{
        width: 95%;
+    }
+    .btns > button {
+        font-size: 11px;
+    }
+    .btns > a{
+        font-size: 11px;
+    }
+    .reg{
+        font-size: 11px !important;
     }
 }

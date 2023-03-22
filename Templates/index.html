@@ -21,7 +21,7 @@
             var alert = document.createElement("div");
             alert.innerHTML = "Post copied to clipboard!";
             alert.style.position = "fixed";
-            alert.style.top = "0";
+            alert.style.top = "1";
             alert.style.left = "50%";
             alert.style.transform = "translate(-50%, 0)";
             alert.style.backgroundColor = "green";
@@ -45,7 +45,7 @@
                 <textarea class="input-post" name="title" id="exampleFormControlTextarea1" rows="3" placeholder="What do you want to talk about....." required></textarea>
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon2">Want to specify an approximate word count for your post?</span>
+                <span class="input-group-text" id="basic-addon2">Want to specify a maximum number of words?</span>
                 <input type="text"  name="word" class="form-control" placeholder="number of words"
                  aria-label="Do you want to specify the number of words for your post?" aria-describedby="basic-addon2">
               </div>
@@ -61,7 +61,8 @@
              while also leveraging the latest advancements in AI technology. By using this website,
               we can focus on other important tasks while still maintaining an active and engaging presence
             on LinkedIn.
-          </div>
+        </div>
+        <span> &#169; <a class="copyright" href="https://m-bouna.com/" target="_blank">M_Bouna</a> 2023</span>
     </div>
     {% endblock %}
 

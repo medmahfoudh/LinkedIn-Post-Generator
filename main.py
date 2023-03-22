@@ -1,5 +1,6 @@
 from flask import Flask , render_template , request, redirect , url_for
 import openai
+import os
 
 app = Flask(__name__)
 
@@ -27,7 +28,7 @@ def generate_post(title , word):
         engine="text-davinci-002",
         prompt = f"I want to write a LinkedIn post that talks about me {title} , write the post in minimum {word} words.",
         # prompt=f"Write a LinkedIn post about {title} with minimum 40 words and hashtags at the end",
-        max_tokens=1024,
+        max_tokens= int(word),
         n=1,
         stop=None,
         temperature=0.7,
